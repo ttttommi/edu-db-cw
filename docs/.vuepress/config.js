@@ -27,15 +27,23 @@ module.exports = {
   themeConfig: {
     // logo: './myAvatar.png',
     sidebar: [
-
       {
         title: 'Вступ',
         path:"/intro/"
       },
+      {
+        title: 'Розроблення загальних вимог до системи',
+        path:"/requirements/",
+        children:[
+          '/requirements/state-of-the-art',
+          '/requirements/stakeholders-needs',
+        ]
+
+      },
 
       {
-        title: 'Розроблення вимог до системи',
-        path:"/requirements/",
+        title: 'Розроблення вимог до функціональности системи',
+        path:"/use cases/"
       },
 
       {
@@ -56,11 +64,6 @@ module.exports = {
       {
         title: 'Висновки',
         path:"/conclusion/"
-      },
-
-      {
-        title: 'API',
-        path:"/api/"
       }
 
     ],
@@ -76,7 +79,7 @@ module.exports = {
     // Assumes GitHub. Can also be a full GitLab url.
     repo: 'https://github.com/thundergodsswrath/edu-db-cw',
     // Customising the header label
-    // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
+    // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on themeConfig.repo
     repoLabel: 'Github',
 
     // Optional options for generating "Edit this page" link
