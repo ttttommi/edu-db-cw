@@ -1,16 +1,6 @@
 # Модель прецедентів
 
-В цьому файлі необхідно перелічити всі документи, розроблені в проекті та дати посилання на них.
-
-*Модель прецедентів повинна містити загальні оглядові діаграми та специфікації прецедентів.*
-
-
-
-Вбудовування зображень діаграм здійснюється з використанням сервісу [plantuml.com](https://plantuml.com/). 
-
-В markdown-файлі використовується опис діаграми
-
-```md
+## Загальна схема
 
 <center style="
     border-radius:4px;
@@ -21,65 +11,48 @@
 
 @startuml
 
-    right header
-        <font size=24 color=black>Package: <b>UCD_3.0
-    end header
+    actor "Гість" as Guest
+    actor "Користувач" as User
+    actor "Адміністратор" as Admin
 
-    title
-        <font size=18 color=black>UC_8. Редагувати конфігурацію порталу
-        <font size=16 color=black>Діаграма прецедентів
-    end title
-
-
-    actor "Користувач" as User #eeeeaa
+    usecase "<b>Guest.Search<b> \n Пошук інформації" as GS
+    usecase "<b>Guest.SignUp<b> \n Зареєструватися в системі" as GSU
+    usecase "<b>Guest.SignIn<b> \n Увійти в систему" as GSI
     
-    package UCD_1{
-        usecase "<b>UC_1</b>\nПереглянути список \nзвітів" as UC_1 #aaeeaa
-    }
+    usecase "<b>User.Logout<b> \n Вихід з системи" as UL
+    usecase "<b>User.Search<b> \n Пошук інформації користувачем" as US
+    usecase "<b>User.Download<b> \n Завантаження файлу \n даних з системи" as UD
+    usecase "<b>User.UploadRequest<b> \n Завантаження даних\n користувачем у систему" as UUR
+    usecase "<b>User.EditRequest<b> \n Пропонування оновлених даних \n користувачем у систему" as UER
     
-    usecase "<b>UC_1.1</b>\nЗастосувати фільтр" as UC_1.1
-    usecase "<b>UC_1.2</b>\nПереглянути метадані \nзвіту" as UC_1.2  
-    usecase "<b>UC_1.2.1</b>\nДати оцінку звіту" as UC_1.2.1  
-    usecase "<b>UC_1.2.2</b>\nПереглянути інформацію \nпро авторів звіту" as UC_1.2.2
+    usecase "<b>Admin.Logout<b> \n Вихід з системи" as AL
+    usecase "<b>Admin.ChangeUserPermissions<b> \n Зміна доступу до функцій \n системи конкретному користувачеві" as ACUP
+    usecase "<b>Admin.ApproveRequest<b> \n Одобрити запит користувача" as AAR
+    usecase "<b>Admin.DenyRequest<b> \n Відхилити запит користувача" as ADR
     
-    package UCD_1 {
-        usecase "<b>UC_4</b>\nВикликати звіт" as UC_4 #aaeeaa
-    }
+    Guest -u-> GS
+    Guest -u-> GSU
+    Guest -u-> GSI
     
-    usecase "<b>UC_1.1.1</b>\n Використати \nпошукові теги" as UC_1.1.1  
-    usecase "<b>UC_1.1.2</b>\n Використати \nрядок пошуку" as UC_1.1.2
-    usecase "<b>UC_1.1.3</b>\n Використати \nавторів" as UC_1.1.3  
+    User -u-> UL
+    User -u-> US
+    User -r-> UUR
+    User -l-> UER
+    User -d-> UD
     
+    Admin -l-> AL 
+    Admin -r-> ACUP 
+    Admin -d-> AAR
+    Admin -d-> ADR
     
-    
-    User -> UC_1
-    UC_1.1 .u.> UC_1 :extends
-    UC_1.2 .u.> UC_1 :extends
-    UC_4 .d.> UC_1.2 :extends
-    UC_1.2 .> UC_1.2 :extends
-    UC_1.2.1 .u.> UC_1.2 :extends
-    UC_1.2.2 .u.> UC_1.2 :extends
-    UC_1 ..> UC_1.2.2 :extends
-    
-    
-    UC_1.1.1 -u-|> UC_1.1
-    UC_1.1.2 -u-|> UC_1.1
-    UC_1.1.3 -u-|> UC_1.1
-    
-    right footer
-        Аналітичний портал. Модель прецедентів.
-        НТУУ КПІ ім.І.Сікорського
-        Киів-2020
-    end footer
+    Admin -u-|> User
+    User -u-|> Guest
 
 @enduml
 
-**Діаграма прецедентів**
-
 </center>
-```
 
-яка буде відображена наступним чином
+## Гість
 
 <center style="
     border-radius:4px;
@@ -90,60 +63,78 @@
 
 @startuml
 
-    right header
-        <font size=24 color=black>Package: <b>UCD_3.0
-    end header
+    actor "Гість" as Guest
 
-    title
-        <font size=18 color=black>UC_8. Редагувати конфігурацію порталу
-        <font size=16 color=black>Діаграма прецедентів
-    end title
+    usecase "<b>Guest.Search<b> \n Пошук інформації" as GS
+    usecase "<b>Guest.SignUp<b> \n Зареєструватися в системі" as GSU
+    usecase "<b>Guest.SignIn<b> \n Увійти в систему" as GSI
 
-
-    actor "Користувач" as User #eeeeaa
-    
-    package UCD_1{
-        usecase "<b>UC_1</b>\nПереглянути список \nзвітів" as UC_1 #aaeeaa
-    }
-    
-    usecase "<b>UC_1.1</b>\nЗастосувати фільтр" as UC_1.1
-    usecase "<b>UC_1.2</b>\nПереглянути метадані \nзвіту" as UC_1.2  
-    usecase "<b>UC_1.2.1</b>\nДати оцінку звіту" as UC_1.2.1  
-    usecase "<b>UC_1.2.2</b>\nПереглянути інформацію \nпро авторів звіту" as UC_1.2.2
-    
-    package UCD_1 {
-        usecase "<b>UC_4</b>\nВикликати звіт" as UC_4 #aaeeaa
-    }
-    
-    usecase "<b>UC_1.1.1</b>\n Використати \nпошукові теги" as UC_1.1.1  
-    usecase "<b>UC_1.1.2</b>\n Використати \nрядок пошуку" as UC_1.1.2
-    usecase "<b>UC_1.1.3</b>\n Використати \nавторів" as UC_1.1.3  
-    
-    
-    
-    User -> UC_1
-    UC_1.1 .u.> UC_1 :extends
-    UC_1.2 .u.> UC_1 :extends
-    UC_4 .d.> UC_1.2 :extends
-    UC_1.2 .> UC_1.2 :extends
-    UC_1.2.1 .u.> UC_1.2 :extends
-    UC_1.2.2 .u.> UC_1.2 :extends
-    UC_1 ..> UC_1.2.2 :extends
-    
-    
-    UC_1.1.1 -u-|> UC_1.1
-    UC_1.1.2 -u-|> UC_1.1
-    UC_1.1.3 -u-|> UC_1.1
-    
-    right footer
-        Аналітичний портал. Модель прецедентів.
-        НТУУ КПІ ім.І.Сікорського
-        Киів-2020
-    end footer
+    Guest -u-> GSU
+    Guest -u-> GS
+    Guest -u-> GSI
 
 @enduml
 
-**Діаграма прецедентів**
+</center>
+
+## Користувач
+
+<center style="
+    border-radius:4px;
+    border: 1px solid #cfd7e6;
+    box-shadow: 0 1px 3px 0 rgba(89,105,129,.05), 0 1px 1px 0 rgba(0,0,0,.025);
+    padding: 1em;"
+>
+
+@startuml
+
+    actor "Користувач" as User
+
+    usecase "<b>User.Logout<b> \n Вихід з системи" as UL
+    usecase "<b>User.Search<b> \n Пошук інформації користувачем" as US
+    usecase "<b>User.Download<b> \n Завантаження файлу\n даних з системи" as UD
+    usecase "<b>User.DataChangeRequest<b> \n Запит користувача \n щодо зміни даних" as UCR
+    usecase "<b>User.UploadRequest<b> \n Завантаження даних \n користувачем у систему" as UUR
+    usecase "<b>User.EditRequest<b> \n Пропонування оновлення \n даних користувача у систему" as UER
+
+    User -u-> UL
+    User -d-> US
+    User -l-> UCR
+    User -r-> UD
+
+    UUR .u.> UCR:extends
+    UER .d.> UCR:extends
+
+@enduml
 
 </center>
 
+## Адміністратор
+
+<center style="
+    border-radius:4px;
+    border: 1px solid #cfd7e6;
+    box-shadow: 0 1px 3px 0 rgba(89,105,129,.05), 0 1px 1px 0 rgba(0,0,0,.025);
+    padding: 1em;"
+>
+
+@startuml
+    
+    actor "Адміністратор" as Admin
+    
+    usecase "<b>Admin.Logout<b> \n Вихід з системи" as AL
+    usecase "<b>Admin.ChangeUserPermissions<b> \n Зміна доступу до функцій \n системи конкретному користувачеві" as ACUP
+    usecase "<b>Admin.ConsiderRequest<b> \n Розглянути запит користувача" as ACR
+    usecase "<b>Admin.ApproveRequest<b> \n Одобрити запит користувача" as AAR
+    usecase "<b>Admin.DenyRequest<b> \n Відхилити запит користувача" as ADR
+    
+    Admin -d-> AL
+    Admin -r-> ACUP
+    Admin -l-> ACR
+    
+    AAR .u.> ACR:extends
+    ADR .d.> ACR:extends
+
+@enduml
+
+</center>
