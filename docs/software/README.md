@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS public.datafiles
 CREATE TABLE IF NOT EXISTS public.requests
 (
     request_date date NOT NULL,
-    datafile_id bigint NOT NULL,
+    datafile_id bigint,
     id bigserial NOT NULL,
     user_id bigint NOT NULL,
     content character varying(255) NOT NULL,
