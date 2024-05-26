@@ -7,11 +7,11 @@ footer: "ECL 2.0 Licensed | Copyright © [2024] [Skorobohatov Ihor]"
 ---
 
 
-**Виконав:**
+**Виконала:**
 
-*студент 2-го курсу, групи IO-25*
+*студентка 2-го курсу, групи IO-25*
 
-**Скоробогатов Ігор [igorskor0912@gmail.com, <a href="https://t.me/thundergodswrath" target="_blank">@thundergodswrath</a>]**
+**Борисенко Таміла [tamilaborisenko1@gmail.com, <a href="https://t.me/tttommi" target='_blank'>@tttommi</a>]**
 
 
 **Керівник**

@@ -8,28 +8,28 @@
 
 ### Отримати всі запити (виводяться запити користувача) - Користувач
 
-![](./images/get_all_data.png)
+![](./images/get.jpg)
 
 ### Отримати дані користувача - Користувач
 
-![](./images/get_user.png)
+![](./images/user.jpg)
 
 ## POST
 
 ### Зареєстуватись - Гість
 
-![](./images/register_user.png)
+![](./images/auth.jpg)
 
 ### Авторизуватись - Гість
 
-![](./images/auth_user.png)
+![](./images/authA.jpg)
 
 ### Відправити запит - Користувач
 
-![](./images/send_request.png)
+![](./images/request.jpg)
 
 ## PATCH
 
 ### Оновити профіль користувача - Користувач
 
-![](./images/patch_user.png)
+![](./images/patch.jpg)
